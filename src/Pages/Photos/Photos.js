@@ -5,7 +5,7 @@ import Photo from './Photo/Photo';
 const Photos = () => {
     const [photos, SetPhotos] = useState([]);
     useEffect(() => {
-        fetch('products.json')
+        fetch('photoInfo.json')
             .then(res => res.json())
             .then(data => SetPhotos(data))
     }, [])
@@ -25,7 +25,7 @@ const Photos = () => {
                         <li class="btn btn-outline-dark" data-filter=".gts">Weeding</li>
                         <li class="btn btn-outline-dark" data-filter=".lap">Tour & Travels</li>
                         <li class="btn btn-outline-dark" data-filter=".lap">Fashion</li>
-                        <li class="btn btn-outline-dark text" data-filter=".selfie">Animals</li>
+                        {/* <li class="btn btn-outline-dark text" data-filter=".selfie">Animals</li> */}
                     </ul>
                 </div>
                 <div class="portfolio-item row">
