@@ -23,10 +23,13 @@ function App() {
         {/* <Route path='/home' element={<></Home>}></Route> */}
         <Route path='/services' element={<Services></Services>}></Route>
         <Route path='/photos' element={<Photos></Photos>}></Route>
+        <Route path='/photos/:weeding' element={<Photos></Photos>}></Route>
+        <Route path='/photos/:tour' element={<Photos></Photos>}></Route>
+        <Route path='/photos/:fashion' element={<Photos></Photos>}></Route>
         <Route path='/about' element={<About></About>}></Route>
         <Route path='/blog' element={<Blog></Blog>}></Route>
         <Route path='/contact' element={<Contact></Contact>}></Route>
-        <Route path='/*' element={<NotFound></NotFound>}></Route>
+        <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
       <Footer></Footer>
     </div>
