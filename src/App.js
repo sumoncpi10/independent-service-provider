@@ -12,6 +12,10 @@ import Services from './Pages/Services/Services';
 import Topbanar from './Pages/Shared/TopBanar/Topbanar';
 import Contact from './Pages/Contact/Contact';
 import Blog from './Pages/Blog/Blog';
+import LogIn from './Pages/LogIn/LogIn';
+import SignUp from './Pages/SignUp/SignUp';
+import RequireAuth from './Pages/RequireAuth/RequireAuth';
+import Inventory from './Pages/Inventory/Inventory';
 
 function App() {
   return (
@@ -22,6 +26,11 @@ function App() {
         <Route path='/home' element={<Home></Home>}></Route>
         {/* <Route path='/home' element={<></Home>}></Route> */}
         <Route path='/services' element={<Services></Services>}></Route>
+        <Route path='/inventory' element={
+          <RequireAuth>
+            <Inventory />
+          </RequireAuth>}>
+        </Route>
         <Route path='/photos' element={<Photos></Photos>}></Route>
         <Route path='/photos/:weeding' element={<Photos></Photos>}></Route>
         <Route path='/photos/:tour' element={<Photos></Photos>}></Route>
@@ -29,6 +38,8 @@ function App() {
         <Route path='/about' element={<About></About>}></Route>
         <Route path='/blog' element={<Blog></Blog>}></Route>
         <Route path='/contact' element={<Contact></Contact>}></Route>
+        <Route path='/login' element={<LogIn />}></Route>
+        <Route path='/signup' element={<SignUp />}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
       <Footer></Footer>

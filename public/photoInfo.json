@@ -115,5 +115,31 @@
     "img": "https://img.freepik.com/free-photo/young-muslim-bride-groom-wedding-photos_181624-36526.jpg?t=st=1650202682~exp=1650203282~hmac=0c226c63ddb7ef2c7105633108d35562935606165e91704a7f6f27f57ccf9a8a&w=1380",
     "shipping": 50,
     "quantity": 0
+  },
+  {
+    "id": "10",
+    "category": "tour",
+    "name": "ZX 1K BOOST SHOES",
+    "seller": "Addidas",
+    "price": 319,
+    "stock": 7,
+    "ratings": 4,
+    "ratingsCount": 1360,
+    "img": "https://img.freepik.com/free-photo/woman-hand-holding-camera-standing-top-rock-nature-travel-concept_335224-887.jpg?t=st=1650214009~exp=1650214609~hmac=b2deaa6d99d922270353c1cad3ba114c9934a6f88be7981786f82b8776b415a5&w=1380",
+    "shipping": 50,
+    "quantity": 0
+  },
+  {
+    "id": "11",
+    "category": "fashion",
+    "name": "ZX 1K BOOST SHOES",
+    "seller": "Addidas",
+    "price": 319,
+    "stock": 7,
+    "ratings": 4,
+    "ratingsCount": 1360,
+    "img": "https://img.freepik.com/free-photo/happy-lady-stylish-skirt-boater-posing-pink-wall_197531-23653.jpg?t=st=1650214050~exp=1650214650~hmac=2b2d8621941d6ee086293f4da624cc9c3b33b7ef8e702dabd75b3696f0b85ae5&w=1380",
+    "shipping": 50,
+    "quantity": 0
   }
 ]

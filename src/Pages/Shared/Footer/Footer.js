@@ -1,5 +1,8 @@
 import React from 'react';
-
+import facebookImg from '../../../images/facebook.jpg';
+import googleImg from '../../../images/google.png';
+import githubImg from '../../../images/gitgub.png';
+import { Link } from 'react-router-dom';
 const Footer = () => {
     const year = new Date().getFullYear();
 
@@ -15,17 +18,13 @@ const Footer = () => {
                     <span class="text-muted">&copy; {year} TakePic Photography of Bangladesh </span>
                 </div>
 
-                <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-                    <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24">
-                        {/* <use xlink:href="#twitter" /> */}
-                    </svg></a></li>
-                    <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24">
-                        {/* <use xlink:href="#instagram" /> */}
-                    </svg></a></li>
-                    <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24">
-                        {/* <use xlink:href="#facebook" /> */}
-                    </svg></a></li>
+
+                <ul className="socials">
+                    <li ><Link to="/login"><i className="display-flex-center zmdi zmdi-google"><img src={googleImg} alt="" /></i></Link></li>
+                    <li><Link to="/login"><i className="display-flex-center zmdi zmdi-facebook" alt="" ><img src={facebookImg} alt="" /></i></Link></li>
+                    <li><Link to="/login"><i className="display-flex-center zmdi zmdi-twitter"><img src={githubImg} alt="" /></i></Link></li>
                 </ul>
+
             </footer>
         </div>
     );

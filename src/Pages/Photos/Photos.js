@@ -40,13 +40,13 @@ const Photos = () => {
                     </div>
                 }
 
-                <div className="portfolio-item row">
+                <div className="portfolio-item row d-flex justify-content-center">
                     {
                         // photos?.filter(photo => path.includes(photo.category) ? <h1>hi</h1> : '')
                         photos?.map(photo => <Photo key={photo.id} photo={photo} ></Photo>)
                     }
                     {
-                        photos.length > 8 ? (<button className='m-3 btn-show'>Show More</button>) : ""
+                        path === '/photos' ? '' : photos.length > 8 ? (<Link to='/photos'><button type="button" className="btn btn-dark m-4 btn-show ">Show More</button></Link>) : ""
                     }
 
                 </div>

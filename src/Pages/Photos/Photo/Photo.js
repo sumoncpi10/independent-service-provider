@@ -5,12 +5,12 @@ const Photo = ({ photo }) => {
 
     const path = window.location.pathname;
     // console.log(path);
-    if ((path !== '/photos') && (path !== '/home') && !path.includes(photo.category)) {
+    if ((path !== '/photos') && (path !== '/home') && (path !== '/') && !path.includes(photo.category)) {
         return
     }
     const { img, id } = photo;
 
-    if (id > 8) {
+    if ((path !== '/photos') && id > 8) {
         return
     }
 
