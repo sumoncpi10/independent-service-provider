@@ -71,7 +71,7 @@ const SignUp = () => {
             await createUserWithEmailAndPassword(email, password);
             await updateProfile({ displayName });
 
-            navigate('/inventory');
+            navigate('/home');
             // toast('Email varification List Sent!!!');
         }
 
