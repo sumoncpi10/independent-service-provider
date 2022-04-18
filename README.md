@@ -1,3 +1,3 @@
 # TakePic Photography Website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project A takePic Photography [live Site link](https://takepic-f1d3a.web.app/).
