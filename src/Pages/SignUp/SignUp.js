@@ -6,11 +6,15 @@ import signUpImage from '../../images/signup-image.jpg';
 import { faUser, faEnvelope, faUnlockKeyhole, faLock } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../firabase.init';
+import { ToastContainer, toast } from 'react-toastify';
 
+import 'react-toastify/dist/ReactToastify.css';
+import Loading from '../Shared/Loading/Loading';
 
 const SignUp = () => {
+    const [displayName, setDisplayName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
@@ -23,8 +27,12 @@ const SignUp = () => {
         user,
         loading,
         error,
-    ] = useCreateUserWithEmailAndPassword(auth);
-
+    ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+    const [updateProfile, updating, updateErrorVarification] = useUpdateProfile(auth);
+    const handleName = (event) => {
+        setDisplayName(event.target.value);
+        console.log(event.target.value);
+    }
     const handleEmail = (event) => {
         setEmail(event.target.value);
         console.log(event.target.value);
@@ -37,10 +45,13 @@ const SignUp = () => {
         setConfirmPassword(e.target.value);
         console.log((e.target.value))
     }
+    if (loading) {
+        return <Loading></Loading>
+    }
     if (user) {
         navigate(from, { replace: true });
     }
-    const handleFormSubmit = (e) => {
+    const handleFormSubmit = async (e) => {
         e.preventDefault();
         if (!email) {
             setError('Please Enter a Email!!!!!');
@@ -60,7 +71,11 @@ const SignUp = () => {
         }
         else {
             setError('');
-            createUserWithEmailAndPassword(email, password);
+            await createUserWithEmailAndPassword(email, password);
+            await updateProfile({ displayName });
+
+            navigate('/inventory');
+            toast('Email varification List Sent!!!');
         }
 
     }
@@ -77,7 +92,7 @@ const SignUp = () => {
                             <form onSubmit={handleFormSubmit} method="POST" className="register-form g-3" id="register-form">
                                 <div className="form-group d-flex align-items-center">
                                     <label htmlFor="name"><FontAwesomeIcon icon={faUser}></FontAwesomeIcon></label>
-                                    <input type="text" name="name" id="name" placeholder="Your Name" />
+                                    <input onBlur={handleName} type="text" name="name" id="name" placeholder="Your Name" />
                                 </div>
                                 <div className="form-group d-flex align-items-center">
                                     <label htmlFor="email"><FontAwesomeIcon icon={faEnvelope} /></label>
@@ -107,7 +122,7 @@ const SignUp = () => {
                     </div>
                 </div>
             </section>
-
+            <ToastContainer />
 
 
         </div>

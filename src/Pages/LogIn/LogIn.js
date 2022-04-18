@@ -9,11 +9,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../firabase.init';
+import Loading from '../Shared/Loading/Loading';
 const LogIn = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const [error1, setError] = useState('');
+    // const [error1, setError] = useState('');
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
@@ -24,7 +25,7 @@ const LogIn = () => {
         error,
     ] = useSignInWithEmailAndPassword(auth);
 
-    const [signInWithGoogle] = useSignInWithGoogle(auth);
+    const [signInWithGoogle, userGoogle, loadingGoogle] = useSignInWithGoogle(auth);
 
     const handleEmail = (event) => {
         setEmail(event.target.value);
@@ -34,9 +35,12 @@ const LogIn = () => {
         setPassword(e.target.value);
         console.log((e.target.value))
     }
-    if (user) {
+    if (loading || loadingGoogle) {
+        return <Loading></Loading>
+    }
+    if (user || userGoogle) {
         navigate(from, { replace: true });
-        console.log(user);
+        // console.log(user);
     }
     const handleFormSubmit = (e) => {
         e.preventDefault();

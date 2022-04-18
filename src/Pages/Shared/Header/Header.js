@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../firabase.init';
 import { signOut } from 'firebase/auth';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCoffee } from '@fortawesome/free-solid-svg-icons'
 const Header = () => {
     const [user] = useAuthState(auth);
 
@@ -34,7 +36,7 @@ const Header = () => {
                         user?.email ?
                             <div className="dropdown text-end">
                                 <a href="#" className="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <img src={user.photoURL} alt="mdo" width="42" height="42" className="rounded-circle" />
+                                    <img src={user?.photoURL ? user.photoURL : 'https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png'} alt="mdo" width="42" height="42" className="rounded-circle" />
                                 </a>
                                 <ul className="dropdown-menu text-small" aria-labelledby="dropdownUser1">
                                     <li className=''><a className="dropdown-item" href="#">{user?.displayName}</a></li>
