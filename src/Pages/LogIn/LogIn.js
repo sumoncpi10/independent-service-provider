@@ -10,6 +10,11 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../firabase.init';
 import Loading from '../Shared/Loading/Loading';
+import { sendPasswordResetEmail } from 'firebase/auth';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useSendPasswordResetEmail } from 'react-firebase-hooks/auth';
+
 const LogIn = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -26,7 +31,9 @@ const LogIn = () => {
     ] = useSignInWithEmailAndPassword(auth);
 
     const [signInWithGoogle, userGoogle, loadingGoogle] = useSignInWithGoogle(auth);
-
+    const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(
+        auth
+    );
     const handleEmail = (event) => {
         setEmail(event.target.value);
         console.log(event.target.value);
@@ -46,6 +53,16 @@ const LogIn = () => {
         e.preventDefault();
         signInWithEmailAndPassword(email, password);
     }
+    const resetPassword = async () => {
+
+        if (email) {
+            await sendPasswordResetEmail(email);
+            toast('Password Reset Email Sent Successfully!!!!');
+        }
+        else {
+            toast('Enter Your Email Correctly');
+        }
+    }
     return (
         <div className="main">
 
@@ -56,14 +73,14 @@ const LogIn = () => {
                             <figure><img src={signInImage} alt="sing up image" /></figure>
                             <a href="#" className="signup-image-link"><Link to='/signup'>Create an account</Link></a>
                         </div>
-
+                        <ToastContainer />
                         <div className="signin-form">
                             <h2 className="form-title">Sign In</h2>
                             <p className='text-danger'>{error ? error.message : ''}</p>
                             <form onSubmit={handleFormSubmit} method="POST" className="register-form" id="login-form">
                                 <div className="form-group d-flex align-items-center">
                                     <label htmlFor="email"><FontAwesomeIcon icon={faEnvelope} /></label>
-                                    <input onBlur={handleEmail} type="text" name="email" id="email" placeholder="Your Name" />
+                                    <input onBlur={handleEmail} type="text" name="email" id="email" placeholder="Your Email" />
                                 </div>
                                 <div className="form-group d-flex align-items-center pt-3">
                                     <label htmlFor="pass"><FontAwesomeIcon icon={faUnlockKeyhole}></FontAwesomeIcon></label>
@@ -76,7 +93,9 @@ const LogIn = () => {
                                 <div className="form-group form-button">
                                     <input type="submit" name="signin" id="signin" className="form-submit" value="Log in" />
                                 </div>
+
                             </form>
+                            <button className='btn btn-link mt-2' onClick={resetPassword}>Reset Password</button>
                             <div className="social-login">
                                 <span className="social-label">Or login with</span>
                                 <ul className="socials">

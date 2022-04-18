@@ -8,9 +8,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../firabase.init';
-import { ToastContainer, toast } from 'react-toastify';
-
-import 'react-toastify/dist/ReactToastify.css';
 import Loading from '../Shared/Loading/Loading';
 
 const SignUp = () => {
@@ -75,7 +72,7 @@ const SignUp = () => {
             await updateProfile({ displayName });
 
             navigate('/inventory');
-            toast('Email varification List Sent!!!');
+            // toast('Email varification List Sent!!!');
         }
 
     }
@@ -122,7 +119,7 @@ const SignUp = () => {
                     </div>
                 </div>
             </section>
-            <ToastContainer />
+
 
 
         </div>
