@@ -16,22 +16,30 @@ const Slider = () => {
                     </div>
                     <img src='https://preview.colorlib.com/theme/rettro/assets/img/hero/xh1_hero1.png.pagespeed.ic.iM0zmOGvvG.webp' class="d-block w-100" alt="..." />
                     <div class="carousel-caption d-none d-md-block">
-                        <h5>Tour & Travel</h5>
+                        <h5 className='text-primary'>Tour & Travel</h5>
                         <p>Some representative placeholder content for the first slide.</p>
                     </div>
                 </div>
 
                 <div class="carousel-item" data-bs-interval="2000">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h1 className='text-white bold pb-5 mb-5'>Photography</h1>
+
+                    </div>
                     <img src="https://preview.colorlib.com/theme/rettro/assets/img/hero/xh1_hero2.png.pagespeed.ic.3BwYkQ8Jds.webp" class="d-block w-100" alt="..." />
                     <div class="carousel-caption d-none d-md-block">
-                        <h5>Natural Places</h5>
+                        <h5 className='text-primary'>Natural Places</h5>
                         <p>Some representative placeholder content for the second slide.</p>
                     </div>
                 </div>
                 <div class="carousel-item">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h1 className='text-white bold pb-5 mb-5'>Photography</h1>
+
+                    </div>
                     <img src="https://preview.colorlib.com/theme/rettro/assets/img/hero/xh1_hero3.png.pagespeed.ic.84CNAjCJg8.webp" class="d-block w-100" alt="..." />
                     <div class="carousel-caption d-none d-md-block">
-                        <h5>Animal</h5>
+                        <h5 className='text-primary'>Animal</h5>
                         <p>Some representative placeholder content for the third slide.</p>
                     </div>
                 </div>
