@@ -52,7 +52,13 @@ const LogIn = () => {
     const handleFormSubmit = (e) => {
         e.preventDefault();
         signInWithEmailAndPassword(email, password);
+
     }
+    const handleGoogleSignin = () => {
+        signInWithGoogle();
+
+    }
+
     const resetPassword = async () => {
 
         if (email) {
@@ -99,7 +105,7 @@ const LogIn = () => {
                             <div className="social-login">
                                 <span className="social-label">Or login with</span>
                                 <ul className="socials">
-                                    <li onClick={() => signInWithGoogle()}><a href="#"><i className="display-flex-center zmdi zmdi-google"><img src={googleImg} alt="" /></i></a></li>
+                                    <li onClick={handleGoogleSignin}> <a href="#"><i className="display-flex-center zmdi zmdi-google"><img src={googleImg} alt="" /></i></a></li>
                                     <li><a href="#"><i className="display-flex-center zmdi zmdi-facebook" alt="" ><img src={facebookImg} alt="" /></i></a></li>
                                     <li><a href="#"><i className="display-flex-center zmdi zmdi-twitter"><img src={githubImg} alt="" /></i></a></li>
                                 </ul>
@@ -107,9 +113,9 @@ const LogIn = () => {
                         </div>
                     </div>
                 </div>
-            </section>
+            </section >
 
-        </div>
+        </div >
     );
 };
 
